@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "BC.GAME Extension",
+  "version": "1.1",
+  "permissions": [
+    "scripting",
+    "activeTab",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://bc.game/game/crash/*",
+    "file:///*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [ "https://bc.game/game/crash/*" ],
+      "js": [ "content.js" ]
+    },
+    {
+      "matches": ["file:///*"],
+      "js": ["alert.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "download.webp",
+      "48": "download.webp",
+      "128": "download.webp"
+    }
+  }
+}
